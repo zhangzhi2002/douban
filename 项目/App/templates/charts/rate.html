@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="referrer" content="no-referrer">
+
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>豆瓣电影评分表</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="../../static/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="../../static/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this 表格 -->
+    <link href="../../static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../top/index.html">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">豆瓣电影系统<sup>Z</sup></div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="/home">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>首页</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/detail">
+                <i class="fas fa-fw fa-table"></i>
+                <span>电影详情表</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/search">
+                <i class="fas fa-search fa-sm"></i>
+                <span>搜索页面</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            数据表
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>电影分析表</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="/time">时间分析表</a>
+                    <a class="collapse-item" href="/rate">评分分析表</a>
+                    <a class="collapse-item" href="cards.html">地图分析表</a>
+                    <a class="collapse-item" href="cards.html">类型分析表</a>
+                    <a class="collapse-item" href="cards.html">演员导演分析表</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>数据操作</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Utilities:</h6>
+                    <a class="collapse-item" href="utilities-color.html">Colors</a>
+                    <a class="collapse-item" href="utilities-border.html">Borders</a>
+                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                    <a class="collapse-item" href="utilities-other.html">Other</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            词云图
+        </div>
+
+
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>标题词云图</span></a>
+        </li><!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>简介词云图</span></a>
+        </li>
+
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link" href="tables.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>演员名词云图</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="tables.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>评论词云图</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        <div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>
+
+        <!-- Sidebar Message -->
+        <div class="sidebar-card d-none d-lg-flex">
+            <img class="sidebar-card-illustration mb-2" src="../../static/img/undraw_rocket.svg" alt="...">
+            <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and
+                more!</p>
+            <a class="btn btn-success btn-sm" href="#">Templates</a>
+        </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+        <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                <!-- Sidebar Toggle (Topbar) -->
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto">
+                    <div class="topbar-divider d-none d-sm-block"></div>
+
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2  d-lg-inline text-gray-600 small">{{ email }}</span>
+
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                             aria-labelledby="userDropdown">
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                退出登录
+                            </a>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </nav>
+            <!-- End of Topbar -->
+            <div class="card mb-4">
+                <div class="card-body d-flex justify-content-center">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        {% if type=='all' %}
+                            <a href="/rate" class="btn btn-secondary active">全部</a>
+                        {% else %}
+                            <a href="/rate" class="btn btn-secondary">全部</a>
+                        {% endif %}
+                        {% for type in movieType %}
+                            {% if type=='all' %}
+                                <a href="/rate/{{ type }}" class="btn btn-secondary active">{{ type }}</a>
+                            {% else %}
+                                <a href="/rate/{{ type }}" class="btn btn-secondary">{{ type }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">电影评分折线图</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div id="main2" style="width: 100%;height:380px"></div>
+                        </div>
+                    </div>
+                    <!-- Area Chart -->
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">电影评分饼状图</h6>
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row justify-content-between">
+                                    <form method="post" action="/rate">
+                                        <div class="input-group">
+
+                                            <input name='电影名称' type="text"
+                                                   class="form-control bg-light border-0 small"
+                                                   placeholder="输入电影关键字..." aria-label="Search"
+                                                   aria-describedby="basic-addon2">
+
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="submit">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div id="main" style="width: 100%;height:380px"></div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="card shadow mb-4">
+                            <!-- Card Header - Dropdown -->
+                            <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                <h6 class="m-0 font-weight-bold text-primary">电影年度平均评分折线图</h6>
+                            </div>
+                            <!-- Card Body -->
+                            <div id="main3" style="width: 100%;height:380px"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- Footer -->
+<footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>made by 张志 &copy; 2521747986@qq.com</span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
+</div>
+
+
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">确定退出登录吗?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">如果您准备结束当前会话，请选择下面的“注销”。</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                <a class="btn btn-primary" href="/logout">注销</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="../../static/vendor/jquery/jquery.min.js"></script>
+<script src="../../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="../../static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="../../static/js/sb-admin-2.min.js"></script>
+
+<!-- Page level plugins -->
+<script src="../../static/vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="../../static/js/demo/chart-area-demo.js"></script>
+<script src="../../static/js/demo/chart-pie-demo.js"></script>
+<script src="../../static/js/demo/echarts.min.js"></script>
+
+
+<!-- Page level plugins -->
+<script src="../../static/vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="../../static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="../../static/js/demo/datatables-demo.js"></script>
+<script>
+    var chartDom = document.getElementById('main');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+        title: {
+            text: '电影评分星级图',
+            subtext: '{{ movie_name }}',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left'
+        },
+        series: [
+            {
+                name: 'Access From',
+                type: 'pie',
+                radius: '50%',
+                data: {{ RateLevels|tojson }},
+                label: {
+                    show: true,
+                    formatter: '{b}: {c} ({d}%)'
+                },
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        ]
+    };
+
+    option && myChart.setOption(option);
+</script>
+<script>
+    var chartDom = document.getElementById('main2');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+        title: {
+            text: '电影评分折线图',
+            subtext: '电影评分',
+            left: 'center'
+        },
+        xAxis: {
+            name: '评分',
+            type: 'category',
+            boundaryGap: false,
+            data: {{ x|tojson }}
+        },
+        yAxis: {
+            name: '个数',
+            type: 'value'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        series: [
+            {
+                data: {{ y|tojson }},
+                type: 'line',
+                areaStyle: {},
+                itemStyle: {
+                    color: 'red'
+                }
+            }
+        ]
+    };
+
+    option && myChart.setOption(option);
+</script><script>
+    var chartDom = document.getElementById('main3');
+    var myChart = echarts.init(chartDom);
+    var option;
+
+    option = {
+        title: {
+            text: '电影年度平均评分折线图',
+            subtext: '电影评分',
+            left: 'center'
+        },
+        xAxis: {
+            name: '年份',
+            type: 'category',
+            boundaryGap: false,
+            data: {{ x2|tojson }}
+        },
+        yAxis: {
+            name: '评分',
+            type: 'value'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        series: [
+            {
+                data: {{ y2|tojson }},
+                type: 'line',
+                areaStyle: {},
+                itemStyle: {
+                    color: 'red'
+                }
+            }
+        ]
+    };
+
+    option && myChart.setOption(option);
+</script>
+</body>
+
+</html>
